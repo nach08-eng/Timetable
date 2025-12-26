@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Digital Library</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="description"
+        content="School Timetable Management System - Interactive and Professional Schedule Manager for L.K.G to 12th Grade">
+    <meta name="keywords" content="school timetable, schedule, teachers, classes, education">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+       /* ================= ADMIN LOGIN PAGE ================= */
+:root {
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --primary-color: #667eea;
+    --primary-dark: #5a67d8;
+    --secondary-color: #764ba2;
+    --kindergarten-color: #f093fb;
+    --primary-school-color: #4facfe;
+    --middle-school-color: #43e97b;
+    --high-school-color: #fa709a;
+    --maths-color: #ff6b6b;
+    --science-color: #4ecdc4;
+    --english-color: #45b7d1;
+    --tamil-color: #f9ca24;
+    --social-color: #6c5ce7;
+    --pet-color: #00b894;
+    --computer-color: #0984e3;
+    --accounts-color: #fdcb6e;
+    --bg-dark: #0f0f23;
+    --bg-light: #1a1a2e;
+    --bg-card: rgba(255, 255, 255, 0.05);
+    --bg-glass: rgba(255, 255, 255, 0.1);
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.2);
+    --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.3);
+    --shadow-glow: 0 0 30px rgba(102, 126, 234, 0.3);
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-xl: 30px;
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    --sidebar-width: 280px;
+    --sidebar-collapsed: 80px;
+}
+
+/* Admin Header */
+.admin-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 30px;
+    z-index: 10;
+}
+
+.admin-header .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.admin-header .logo-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.admin-header .logo span {
+    font-size: 22px;
+    font-weight: 700;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Centering */
+.admin-wrapper {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Login Card */
+.login-container {
+    width: 100%;
+    max-width: 420px;
+    padding: 2.5rem;
+    background: var(--bg-glass);
+    backdrop-filter: blur(20px);
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(255,255,255,0.15);
+    box-shadow: var(--shadow-lg);
+    z-index: 5;
+}
+
+/* Header */
+.login-header {
+    text-align: center;
+    margin-bottom: 1.8rem;
+}
+
+.login-header i {
+    font-size: 3rem;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.login-header h2 {
+    color: var(--primary-color);
+    margin-top: 10px;
+}
+
+.login-header p {
+    color: var(--text-secondary);
+}
+
+/* Form */
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--primary-color);
+    font-size: 18px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.05);
+    color: var(--text-primary);
+}
+
+.form-group select option {
+    background: var(--bg-light);
+    color: var(--text-primary);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 12px rgba(102,126,234,0.3);
+}
+
+/* Button */
+.btn {
+    width: 100%;
+    padding: 12px;
+    background: var(--primary-gradient);
+    border: none;
+    border-radius: var(--radius-xl);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+}
+
+/* Message */
+#loginMessage {
+    text-align: center;
+    margin-top: 1rem;
+    color: #ff6b6b;
+}
+
+
+.bg-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+}
+
+.floating-shape {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--primary-gradient);
+    opacity: 0.1;
+    animation: float 20s infinite ease-in-out;
+}
+
+.shape-1 {
+    width: 400px;
+    height: 400px;
+    top: -100px;
+    left: -100px;
+}
+
+.shape-2 {
+    width: 300px;
+    height: 300px;
+    top: 50%;
+    right: -100px;
+    animation-delay: -5s;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.shape-3 {
+    width: 200px;
+    height: 200px;
+    bottom: 10%;
+    left: 20%;
+    animation-delay: -10s;
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.shape-4 {
+    width: 250px;
+    height: 250px;
+    top: 30%;
+    left: 50%;
+    animation-delay: -15s;
+    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+}
+
+.shape-5 {
+    width: 350px;
+    height: 350px;
+    bottom: -100px;
+    right: 20%;
+    animation-delay: -7s;
+    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    25% {
+        transform: translate(50px, -50px) rotate(90deg);
+    }
+
+    50% {
+        transform: translate(0, -100px) rotate(180deg);
+    }
+
+    75% {
+        transform: translate(-50px, -50px) rotate(270deg);
+    }
+}
+
+    </style>
+</head>
+
+<body>
+     <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+        <div class="floating-shape shape-4"></div>
+        <div class="floating-shape shape-5"></div>
+    </div>
+
+    <!-- Top Logo (same position like home page) -->
+    <header class="admin-header">
+        <div class="logo">
+            <img src="koviloor andavar.jpg" height="50px" width="50px" style="border-radius: 50%" margin="0 40px" alt="School Logo" class="logo-image">
+            <span>KAMHSS</span>
+        </div>
+    </header>
+
+    <!-- Centered Login -->
+    <main class="admin-wrapper">
+        <div class="login-container">
+
+            <div class="login-header">
+                <i class="fas fa-user-shield"></i>
+                <h2>Login</h2>
+                <p>Please sign in to continue</p>
+            </div>
+
+            <form onsubmit="handleLogin(event)">
+                <!-- Role -->
+                <div class="form-group">
+                    <label>Role</label>
+                    <select id="role" required>
+                        <option value="">Select Role</option>
+                        <option value="admin">Admin</option>
+                        <option value="teacher">Teacher</option>
+                    </select>
+                </div>
+
+                <!-- Username -->
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="username" placeholder="Enter username" required>
+                </div>
+
+                <!-- Password -->
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="password" placeholder="Enter password" required>
+                </div>
+
+                <button type="submit" class="btn">Login</button>
+            </form>
+
+            <p id="loginMessage"></p>
+
+        </div>
+    </main>
+
+    <script src="auth.js"></script>
+</body>
+
+</html>

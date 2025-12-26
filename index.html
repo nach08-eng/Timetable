@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="School Timetable Management System">
+    <meta name="keywords" content="school timetable, schedule, teachers, classes, education">
+    <title>School Timetable | Professional Schedule Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+        <div class="floating-shape shape-4"></div>
+        <div class="floating-shape shape-5"></div>
+    </div>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <img src="koviloor andavar.jpg" height="50px" width="50px" style="border-radius: 50%; margin: 0 10px;"
+                    alt="School Logo" class="logo-image">
+                <span>KAMHSS</span>
+            </div>
+            <button class="sidebar-toggle" id="sidebarToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <ul>
+                <li class="nav-item active" data-section="dashboard">
+                    <a href="#dashboard">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item" data-section="kindergarten">
+                    <a href="#kindergarten">
+                        <i class="fas fa-baby"></i>
+                        <span>Kindergarten</span>
+                    </a>
+                </li>
+                <li class="nav-item" data-section="primary">
+                    <a href="#primary">
+                        <i class="fas fa-book-open"></i>
+                        <span>Primary (1-5)</span>
+                    </a>
+                </li>
+                <li class="nav-item" data-section="middle">
+                    <a href="#middle">
+                        <i class="fas fa-book-reader"></i>
+                        <span>Middle (6-9)</span>
+                    </a>
+                </li>
+                <li class="nav-item" data-section="high">
+                    <a href="#high">
+                        <i class="fas fa-user-graduate"></i>
+                        <span>High School (10-12)</span>
+                    </a>
+                </li>
+                <li class="nav-item" data-section="teachers">
+                    <a href="#teachers">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <span>Teachers</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="current-time">
+                <i class="fas fa-clock"></i>
+                <span id="currentTime">00:00:00</span>
+            </div>
+            <div class="current-date">
+                <span id="currentDate">Loading...</span>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content" id="mainContent">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search classes, teachers..." id="searchInput">
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="regenerate-btn" id="regenerateBtn" title="Regenerate Timetable">
+                    <i class="fas fa-sync-alt"></i>
+                    <span>Regenerate</span>
+                </button>
+                <div class="notification-btn">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge">3</span>
+                </div>
+                <button type="submit" class="btn logout-btn" onclick="handleLogout()">
+                    <div class="user-profile">
+                        <div class="user-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="user-info">
+                            <span class="user-name">Logout</span>
+                        </div>
+                    </div>
+                </button>
+            </div>
+        </header>
+
+        <!-- Dashboard Section -->
+        <section class="content-section active" id="dashboard">
+            <div class="welcome-banner">
+                <div class="welcome-content">
+                    <h1>Welcome Back!</h1>
+                    <p>Manage your school timetables efficiently. Today is <span id="todayDate">Loading...</span></p>
+                    <div class="quick-stats">
+                        <div class="stat-card">
+                            <div class="stat-icon kindergarten-icon">
+                                <i class="fas fa-baby"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>2</h3>
+                                <p>Kindergarten</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon primary-icon">
+                                <i class="fas fa-book-open"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>5</h3>
+                                <p>Primary Classes</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon middle-icon">
+                                <i class="fas fa-book-reader"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>4</h3>
+                                <p>Middle Classes</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon high-icon">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>9</h3>
+                                <p>High School</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="welcome-illustration">
+                    <img src="school-illustration.svg" alt="School Illustration" id="welcomeImg">
+                </div>
+            </div>
+
+            <div class="schedule-overview">
+                <h2><i class="fas fa-clock"></i> Schedule Overview</h2>
+                <div class="schedule-cards">
+                    <div class="schedule-card kindergarten-schedule">
+                        <div class="schedule-header">
+                            <h3>Kindergarten (L.K.G & U.K.G)</h3>
+                            <span class="badge kindergarten-badge">Half Day</span>
+                        </div>
+                        <div class="schedule-time">
+                            <i class="fas fa-clock"></i>
+                            <span>09:30 AM — 12:30 PM</span>
+                        </div>
+                    </div>
+
+                    <div class="schedule-card primary-schedule">
+                        <div class="schedule-header">
+                            <h3>Primary (1st — 5th)</h3>
+                            <span class="badge primary-badge">Full Day</span>
+                        </div>
+                        <div class="schedule-time">
+                            <i class="fas fa-clock"></i>
+                            <span>09:30 AM — 04:30 PM</span>
+                        </div>
+                    </div>
+
+                    <div class="schedule-card middle-schedule">
+                        <div class="schedule-header">
+                            <h3>Middle (6th — 9th)</h3>
+                            <span class="badge primary-badge">Full Day</span>
+                        </div>
+                        <div class="schedule-time">
+                            <i class="fas fa-clock"></i>
+                            <span>09:30 AM — 04:30 PM</span>
+                        </div>
+                    </div>
+
+                    <div class="schedule-card high-schedule">
+                        <div class="schedule-header">
+                            <h3>High School (10th — 12th)</h3>
+                            <span class="badge high-badge">Extended</span>
+                        </div>
+                        <div class="schedule-time">
+                            <i class="fas fa-clock"></i>
+                            <span>08:30 AM — 05:30 PM</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="today-highlights">
+                <h2><i class="fas fa-star"></i> Total Teachers</h2>
+                <div class="highlights-grid">
+                    <div class="highlight-card">
+                        <div class="highlight-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="highlight-info">
+                            <h4>Active Teaching Staff</h4>
+                            <p>Dedicated educators across all levels</p>
+                            <span class="highlight-count">25</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Kindergarten Section -->
+        <section class="content-section" id="kindergarten">
+            <div class="section-header">
+                <h2><i class="fas fa-baby"></i> Kindergarten Timetable</h2>
+                <p>L.K.G & U.K.G | 09:30 AM — 12:30 PM</p>
+            </div>
+
+            <div class="class-tabs">
+                <button class="class-tab active" data-class="LKG">L.K.G</button>
+                <button class="class-tab" data-class="UKG">U.K.G</button>
+            </div>
+
+            <div class="timetable-container" id="kindergartenTimetable"></div>
+        </section>
+
+        <!-- Primary Section -->
+        <section class="content-section" id="primary">
+            <div class="section-header">
+                <h2><i class="fas fa-book-open"></i> Primary School Timetable</h2>
+                <p>1st — 5th Grade | 09:30 AM — 04:30 PM</p>
+            </div>
+
+            <div class="class-tabs">
+                <button class="class-tab active" data-class="1">1st Grade</button>
+                <button class="class-tab" data-class="2">2nd Grade</button>
+                <button class="class-tab" data-class="3">3rd Grade</button>
+                <button class="class-tab" data-class="4">4th Grade</button>
+                <button class="class-tab" data-class="5">5th Grade</button>
+            </div>
+
+            <div class="timetable-container" id="primaryTimetable"></div>
+        </section>
+
+        <!-- Middle School Section -->
+        <section class="content-section" id="middle">
+            <div class="section-header">
+                <h2><i class="fas fa-book-reader"></i> Middle School Timetable</h2>
+                <p>6th — 9th Grade | 09:30 AM — 04:30 PM</p>
+            </div>
+
+            <div class="class-tabs">
+                <button class="class-tab active" data-class="6">6th Grade</button>
+                <button class="class-tab" data-class="7">7th Grade</button>
+                <button class="class-tab" data-class="8">8th Grade</button>
+                <button class="class-tab" data-class="9">9th Grade</button>
+            </div>
+
+            <div class="timetable-container" id="middleTimetable"></div>
+        </section>
+
+        <!-- High School Section -->
+        <section class="content-section" id="high">
+            <div class="section-header">
+                <h2><i class="fas fa-user-graduate"></i> High School Timetable</h2>
+                <p>10th — 12th Grade | 08:30 AM — 05:30 PM</p>
+            </div>
+
+            <div class="class-tabs">
+                <button class="class-tab active" data-class="10">10th</button>
+                <button class="class-tab" data-class="11A">11A</button>
+                <button class="class-tab" data-class="11B">11B</button>
+                <button class="class-tab" data-class="11C">11C</button>
+                <button class="class-tab" data-class="11D">11D</button>
+                <button class="class-tab" data-class="12A">12A</button>
+                <button class="class-tab" data-class="12B">12B</button>
+                <button class="class-tab" data-class="12C">12C</button>
+                <button class="class-tab" data-class="12D">12D</button>
+            </div>
+
+            <div class="timetable-container" id="highTimetable"></div>
+        </section>
+
+        <!-- Teachers Section -->
+        <section class="content-section" id="teachers">
+            <div class="section-header">
+                <h2><i class="fas fa-chalkboard-teacher"></i> Teachers & Their Schedules</h2>
+                <p>Complete list of teachers with their allocated classes</p>
+            </div>
+
+            <div class="teacher-filter">
+                <button class="filter-btn active" data-filter="all">All Teachers</button>
+                <button class="filter-btn" data-filter="kindergarten">Kindergarten</button>
+                <button class="filter-btn" data-filter="primary">Primary</button>
+                <button class="filter-btn" data-filter="middle">Middle</button>
+                <button class="filter-btn" data-filter="high">High School</button>
+            </div>
+
+            <div class="teachers-grid" id="teachersGrid"></div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
